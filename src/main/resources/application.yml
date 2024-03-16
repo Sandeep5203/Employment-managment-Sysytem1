@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: EmployeeManagementSystem
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employees
+    username: postgres
+    password: Postgres@
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect : org.hibernate.dialect.PostgreSQLDialect
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        dialect : org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+
+#  data:
+#    redis:
+#      host: localhost
+#      port: 6379
+#  cache:
+#    type: redis
+#    cache-names: firstcache,secondcache
+
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          cognito:
+#            client-id: fpillcc6s15as64qserklu26q
+#            client-secret: 129ue9ujg192n05ss2n622jh8l38vd5k78cj96jdlik10olee9mr
+#        provider:
+#          cognito:
+#            issuer-uri: https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_rzVqzUi55
+#          #            authorization-uri: https://your-subdomain.oktapreview.com/oauth2/v1/authorize
+#          #            token-uri: https://your-subdomain.oktapreview.com/oauth2/v1/token
+#          #            user-info-uri: https://your-subdomain.oktapreview.com/oauth2/v1/userinfo
+#          #            user-name-attribute: sub
+#          #            jwk-set-uri: https://your-subdomain.oktapreview.com/oauth2/v1/keys
+#          #  security:
+#          #    oauth2:
+#          #      resourceserver:
+#          #        jwt:
+#          #          issuer-uri: https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_rzVqzUi55
+#
+#
+
+
+
+

@@ -1,0 +1,81 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Employee</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+
+    <style>
+        div.container {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>Add New Employee</h3>
+    <hr/>
+    <form th:action="@{/saveEmployees}" th:object="${employee}" method="POST">
+        <div class="row p-2">
+            <label class="p-1" >First Name</label>
+            <input type="text" th:field="*{firstName}" class="form-control"
+                   placeholder="first Name" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control"
+                   placeholder="last Name" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">Email</label>
+            <input type="text" th:field="*{email}" class="form-control"
+                   placeholder="email" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">Phone</label>
+            <input type="tel" th:field="*{phone}" class="form-control"
+                   placeholder="phone number" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">joinedDate</label>
+            <input type="date" th:field="*{joinedDate}" class="form-control"
+                   placeholder="dd/mm/yyyy" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">location</label>
+            <input type="text" th:field="*{location}" class="form-control"
+                   placeholder="location" required>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">Gender</label>
+            <select th:field="*{gender}" class="form-select" required>
+                <option value="" selected>select option</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="row p-2">
+            <label class="p-1">Employee Role</label>
+            <select th:field="*{designation}" class="form-select" required>
+                <option value="" selected>select option</option>
+                <option value="Java">Java Developer</option>
+                <option value="Python">Python Developer</option>
+                <option value="Web">Web Developer</option>
+                <option value="Android">Android Developer</option>
+                <option value="UI">UI Developer</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary col-2">Save</button>
+        <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+    <a th:href="@{/employees}">Back to list</a>
+</div>
+</body>
+</html>

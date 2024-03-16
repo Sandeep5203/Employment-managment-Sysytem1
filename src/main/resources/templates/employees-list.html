@@ -1,0 +1,71 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Employees</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"
+              integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+              crossorigin="anonymous" />
+
+    <style>
+        div.container {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>List Employees</h3>
+    <hr/>
+    <a th:href="@{/employees/new}" class="btn btn-primary">Add Employee</a>
+    <br/><br/>
+    <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Designation</th>
+            <th>Joined Date</th>
+            <th>location</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.firstName}" ></td>
+            <td th:text="${employee.lastName}" ></td>
+            <td th:text="${employee.email}" ></td>
+            <td th:text="${employee.phone}" ></td>
+            <td th:text="${employee.designation}"></td>
+            <td th:text="${employee.joinedDate}"></td>
+            <td th:text="${employee.location}" ></td>
+            <td>
+                <a th:href="@{/updateEmployees(employeeId = ${employee.id})}" class="btn btn-info">Update</a>
+                <a th:href="@{/deleteEmployee(employeeId = ${employee.id})}" class="btn btn-Danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap4.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script>
+    new DataTable('#employeeTable');
+    $('#example').DataTable({
+        scrollX: true
+    });
+</script>
+</body>
+</html>
